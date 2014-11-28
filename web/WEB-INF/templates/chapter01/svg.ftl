@@ -1,14 +1,14 @@
-<@nerve.header title="chapter01">
+<@nerve.header title="chapter01:创建svg元素">
     <@nerve.d3 />
 </@nerve.header>
-<div id="container">
-</div>
 <script>
     var container,
             width,
             height,
             colors
             ;
+    var mouseDuration = 250,        //鼠标移动动画时长
+            duration = 1000;
 
     function createChilds(len){
         /*
@@ -27,25 +27,44 @@
         //打印data的内容
         console.log("div个数:"+data.length,data);
 
-        container.selectAll("div.child")                            //选择container下的全部class=child的div元素，此时获取的其实是一个空的集合，这里叫他A
+        container.selectAll("rect.child")                            //选择container下的全部class=child的div元素，此时获取的其实是一个空的集合，这里叫他A
                 .data(data)                                         //为集合A分配数据，此时，A的长度与data一致，而且每个元素分别对应data中的一个元素
                 .enter()                                            //调用enter（）方法，可以理解成进入集合中某一个元素，这里就是div元素
-                .append("div")                                      //因为一开始没有div元素，所以要创建一个
+                .append("rect")                                      //因为一开始没有div元素，所以要创建一个
                 .attr("class","child")                              //给div赋予 child 这个class
-                .style("position","absolute")                       //给div设置position属性
-                .style("left", function(d){return px(d.x);})      //给div设置左边的位移
-                .style("top", function(d){return px(d.y);})       //给div设置顶部的位移
-                .style("width", function(d){return px(d.width);}) //给div设置宽度
-                .style("height", function(d){return px(d.width);})
-                .style("background", function(d, i){               //给div设置背景颜色
+                .attr("x", function(d){return px(d.x);})      //给div设置左边的位移
+                .attr("y", function(d){return px(d.y);})       //给div设置顶部的位移
+                .attr("width", function(d){return px(d.width);}) //给div设置宽度
+                .attr("height", function(d){return px(d.width);})
+                .attr("fill", function(d, i){               //给div设置背景颜色
                     return colors(i);
                 })
-                .on("click",function(e){
+                .on("mouseenter",function(e){
+                    var t = d3.select(this);
+//                    t.transition().stop();
+                    t.transition()
+                            .duration(mouseDuration)
+                            .attr("x", parseInt(t.attr("x"))-4)
+                            .attr("y", parseInt(t.attr("y"))-4)
+                            .attr("width", parseInt(t.attr("width"))+8)
+                            .attr("height", parseInt(t.attr("height"))+8)
+                    ;
+                    d3.event.stopPropagation();
+                })
+                .on("mouseout",function(e){
+                    var t = d3.select(this);
+                    t.transition()
+                            .duration(mouseDuration)
+                            .attr("x", parseInt(t.attr("x"))+4)
+                            .attr("y", parseInt(t.attr("y"))+4)
+                            .attr("width", parseInt(t.attr("width"))-8)
+                            .attr("height", parseInt(t.attr("height"))-8)
+                    ;
                     d3.event.stopPropagation();
                 })
                 .style("opacity", 0)
                 .transition()
-                .duration(750)
+                .duration(duration)
                 .style("opacity", 1)
         ;
 
@@ -53,11 +72,11 @@
         //这是就将多余的div剔除，剔除前，来一个动态效果（透明度慢慢降低到隐藏）
         //在each() 方法中加入动画播放完的监听函数， 通过d3.select(this)获取到当前的div
         //最后调用remove（）方法，将元素从dom中删除
-        container.selectAll("div.child")
+        container.selectAll("rect.child")
                 .data(data)
                 .exit()
                 .transition()
-                .duration(1000)
+                .duration(duration)
                 .style("opacity", 0)
                 .each("end",function(){
                     d3.select(this).remove();
@@ -72,7 +91,20 @@
         return (Math.random()*max).toFixed(0);
     }
     function px(v){
+        if(typeof v === 'string')
+            return v.replace("px",'');
         return v+"px";
+    }
+
+    /**
+     * 创建svg
+     */
+    function createSVG(id,w,h){
+        d3.select("body").append("svg")
+                .attr("id",id)
+                .attr("width",w)
+                .attr("height",h)
+        ;
     }
 
     window.onload = function(){
@@ -81,19 +113,14 @@
 
         //同时生成随机的颜色值
         colors = d3.scale.category20b();
-        //打印颜色
-        console.log(colors);
-        console.log(colors(0));
 
+        createSVG("container",width,height);
         /*
         赋值给container
         同时调用style()方法给container设置相应的style属性
          */
         container = d3.select("#container");
-        container.style("position", "relative")
-                .style("width", px(width))
-                .style("height", px(height))
-                .style("overflow",'hidden')
+        container
                 .on("click",function(){
                     createChilds(random(20));
                 })

@@ -11,6 +11,8 @@
     <meta name="keywords" content="D3 D3.js D3教程 Html5 canvas" />
     <meta name="description" content="D3.js系列教程（JavaEE+freemarker）" />
     <meta name="author" content="集成显卡 zxingming@qq.com" />
+
+    <link href="${CSS}/style.css" rel="stylesheet" />
     <#nested />
 </head>
 <body>

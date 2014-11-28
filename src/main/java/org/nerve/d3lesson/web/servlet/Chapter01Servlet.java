@@ -19,6 +19,7 @@ public class Chapter01Servlet extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        render(null,req,resp);
+        String type = getParam(req, "type");
+        render(type,req,resp);
     }
 }

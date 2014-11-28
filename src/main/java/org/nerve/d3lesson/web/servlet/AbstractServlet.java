@@ -43,4 +43,28 @@ public abstract class AbstractServlet extends HttpServlet {
         req.getRequestDispatcher(getPath()+viewName).forward(req,resp);
     }
 
+    public boolean isGET(HttpServletRequest req){
+        return req.getMethod().equalsIgnoreCase("GET");
+    }
+
+    protected String getParam(HttpServletRequest req, String name){
+        return req.getParameter(name);
+    }
+
+    /**
+     * 获取int类型的参数
+     * @param req
+     * @param name
+     * @param defVal
+     * @return
+     */
+    protected  int getParam(HttpServletRequest req, String name, int defVal){
+        String p = getParam(req, name);
+
+        try{
+            return Integer.valueOf(p);
+        }catch(Exception e){
+            return defVal;
+        }
+    }
 }
