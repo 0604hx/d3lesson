@@ -18,6 +18,9 @@
                 <li>
                     <a href="chapter01?type=svg" target="_blank">使用D3创建svg元素（效果同上）</a>
                 </li>
+                <li>
+                    <a href="chapter01?type=svg2" target="_blank">使用D3操作基本svg元素</a>
+                </li>
             </ul>
         </li>
 

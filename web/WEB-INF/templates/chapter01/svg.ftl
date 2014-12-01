@@ -25,7 +25,7 @@
            };
         });
         //打印data的内容
-        console.log("div个数:"+data.length,data);
+        console.log("circle个数:"+data.length,data);
 
         container.selectAll("rect.child")                            //选择container下的全部class=child的div元素，此时获取的其实是一个空的集合，这里叫他A
                 .data(data)                                         //为集合A分配数据，此时，A的长度与data一致，而且每个元素分别对应data中的一个元素

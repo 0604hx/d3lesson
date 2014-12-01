@@ -1,2 +1,4 @@
 /*样式文件 by 集成显卡*/
 body {margin: 0px; padding: 0px;}
+
+.controls {position: absolute; top: 0px; width: 100%;left: 0px; z-index: 100;}
