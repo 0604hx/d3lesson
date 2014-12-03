@@ -20,7 +20,7 @@
     var mouseDuration = 250,        //鼠标移动动画时长
             duration = 1000;
 
-    var lastest,            //最近的一个图形
+    var
             count = 0,          //当前存在的元素个数
             g;              //svg 中的g元素，随机图形都在这个g中绘制。关于scg g元素的介绍，请见：http://tutorials.jenkov.com/svg/g-element.html
 
@@ -85,7 +85,6 @@
                             .attr("fill", colors(count))
             ;
             count ++;
-            lastest = c;
         }
         else if(cmd=='rect'){
             var w = random(100)+20;
@@ -98,11 +97,11 @@
                             .attr("fill", colors(count))
                     ;
             count ++ ;
-            lastest = r;
         }
         //随机线条
         else if(cmd=='line'){
             var l= g.append("line")
+                            .attr("class", "child")
                             .attr("x1", random(width))
                             .attr("y1", random(height))
                             .attr("x2", random(width))
@@ -110,11 +109,9 @@
                             .attr("stroke", colors(count))
             ;
             count ++;
-            lastest = l;
         }
         //清除最近添加的元素
         else if(cmd=='clear'){
-            if(lastest)
                 lastest.attr("opacity", 1)
                         .transition()
                         .duration(duration)

@@ -1,0 +1,222 @@
+{
+    "_title": "2013年一本录取率排名（单位:万人）",
+    "datas": [
+        {
+            "enter": 1.5447,
+            "index": 1,
+            "province": "天津",
+            "rate": "24.52%",
+            "total": 6.3
+        },
+        {
+            "enter": 1.7686,
+            "index": 2,
+            "province": "北京",
+            "rate": "24.33%",
+            "total": 7.27
+        },
+        {
+            "enter": 1.2,
+            "index": 3,
+            "province": "上海",
+            "rate": "22.64%",
+            "total": 5.3
+        },
+        {
+            "enter": 0.6837,
+            "index": 4,
+            "province": "青海",
+            "rate": "18.61%",
+            "total": 3.6733
+        },
+        {
+            "enter": 9.351,
+            "index": 5,
+            "province": "山东",
+            "rate": "18.37%",
+            "total": 50.9
+        },
+        {
+            "enter": 1.001,
+            "index": 6,
+            "province": "宁夏",
+            "rate": "17.05%",
+            "total": 5.87
+        },
+        {
+            "enter": 2.2435,
+            "index": 7,
+            "province": "吉林",
+            "rate": "14.47%",
+            "total": 15.5
+        },
+        {
+            "enter": 3.6186,
+            "index": 8,
+            "province": "福建",
+            "rate": "14.19%",
+            "total": 25.5
+        },
+        {
+            "enter": 3.4369,
+            "index": 9,
+            "province": "贵州",
+            "rate": "13.87%",
+            "total": 24.78
+        },
+        {
+            "enter": 4.1887,
+            "index": 10,
+            "province": "浙江",
+            "rate": "13.38%",
+            "total": 31.3
+        },
+        {
+            "enter": 4.8422,
+            "index": 11,
+            "province": "陕西",
+            "rate": "13.21%",
+            "total": 36.65
+        },
+        {
+            "enter": 2.05,
+            "index": 12,
+            "province": "新疆",
+            "rate": "12.92%",
+            "total": 15.87
+        },
+        {
+            "enter": 3.0179,
+            "index": 13,
+            "province": "云南",
+            "rate": "12.79%",
+            "total": 23.6
+        },
+        {
+            "enter": 0.6396,
+            "index": 14,
+            "province": "海南",
+            "rate": "11.42%",
+            "total": 5.6
+        },
+        {
+            "enter": 2.163,
+            "index": 15,
+            "province": "内蒙古",
+            "rate": "11.21%",
+            "total": 19.3
+        },
+        {
+            "enter": 2.9598,
+            "index": 16,
+            "province": "甘肃",
+            "rate": "10.46%",
+            "total": 28.3
+        },
+        {
+            "enter": 5.1692,
+            "index": 17,
+            "province": "安徽",
+            "rate": "10.12%",
+            "total": 51.1
+        },
+        {
+            "enter": 4.5085,
+            "index": 18,
+            "province": "江苏",
+            "rate": "10.00%",
+            "total": 45.1
+        },
+        {
+            "enter": 3.5789,
+            "index": 19,
+            "province": "湖南",
+            "rate": "9.59%",
+            "total": 37.3
+        },
+        {
+            "enter": 1.9931,
+            "index": 20,
+            "province": "黑龙江",
+            "rate": "9.58%",
+            "total": 20.8
+        },
+        {
+            "enter": 2.195,
+            "index": 21,
+            "province": "重庆",
+            "rate": "9.34%",
+            "total": 23.5
+        },
+        {
+            "enter": 2.4891,
+            "index": 22,
+            "province": "江西",
+            "rate": "9.07%",
+            "total": 27.43
+        },
+        {
+            "enter": 4.0602,
+            "index": 23,
+            "province": "河北",
+            "rate": "9.03%",
+            "total": 44.98
+        },
+        {
+            "enter": 3.5923,
+            "index": 24,
+            "province": "湖北",
+            "rate": "8.20%",
+            "total": 43.8
+        },
+        {
+            "enter": 2.3,
+            "index": 25,
+            "province": "广西",
+            "rate": "7.72%",
+            "total": 29.8
+        },
+        {
+            "enter": 4.8655,
+            "index": 26,
+            "province": "河南",
+            "rate": "6.79%",
+            "total": 71.63
+        },
+        {
+            "enter": 4.3092,
+            "index": 27,
+            "province": "广东",
+            "rate": "5.93%",
+            "total": 72.7
+        },
+        {
+            "enter": 2.1091,
+            "index": 28,
+            "province": "山西",
+            "rate": "5.89%",
+            "total": 35.8
+        },
+        {
+            "enter": 1.4583,
+            "index": 29,
+            "province": "辽宁",
+            "rate": "5.74%",
+            "total": 25.4
+        },
+        {
+            "enter": 2.849,
+            "index": 30,
+            "province": "四川",
+            "rate": "5.28%",
+            "total": 54
+        },
+        {
+            "enter": 0.0904,
+            "index": 31,
+            "province": "西藏",
+            "rate": "4.78%",
+            "total": 1.89
+        }
+    ]
+}

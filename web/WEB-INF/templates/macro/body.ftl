@@ -1,6 +1,7 @@
 <#global JS=base+"/js"/>
 <#global IMAGES = base+"/images"/>
 <#global CSS = base+"/css"/>
+<#global DATA = base+"/data"/>
 
 <#--头部模板-->
 <#macro header title="">
