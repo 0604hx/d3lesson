@@ -1,45 +1,12 @@
-<@nerve.header title="chapter01:创建svg元素">
+<@nerve.header title="chapter02:中国地图实际：2013年各省份高考一本录取率">
     <@nerve.d3 />
 </@nerve.header>
 <style>
-    #tooltip {
-        position: absolute;
-        width: 200px;
-        height: auto;
-        padding: 10px;
-        background-color: white;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        pointer-events: none;
-        z-index: 999;
-        font-size: 12px;
-    }
-
-    #tooltip.hidden {
-        display: none;
-    }
-
-    #tooltip p {
-        margin: 0;
-        font-family: sans-serif;
-        font-size: 16px;
-        line-height: 20px;
-    }
-
-    .controls {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        text-align: right;
-        font-size: 14px;
-    }
+    .box td {text-align: center; padding: 2px;}
+    .box tr:hover td {background-color: #92cf28;color:#fff;}
 </style>
 <!--div提示框-->
-<div id="tooltip" class="hidden">
+<div id="tooltip" class="hidden box">
     <p>
         <strong class="dataHolder" name="province"></strong>
         排名:<span class="dataHolder" name="sort"></span>
@@ -49,14 +16,26 @@
         录取率:<span class="dataHolder" name="rate"></span>
     </div>
 </div>
-<div class="controls">
-    查看方式：
-    <label>
-        <input type="radio" name="type" value="rate" checked="checked" onclick="sortByRate()" />录取率
-    </label>
-    <label>
-        <input type="radio" name="type" value="total" onclick="sortByTotal()" />高考人数
-    </label>
+<div class="box" style="right: 20px; top:20px; background-color: #eaeaea;">
+    <div style="text-align: center; margin-bottom: 10px">
+        查看方式：
+        <label>
+            <input type="radio" name="type" value="rate" checked="checked" onclick="sortByRate()" />录取率
+        </label>
+        <label>
+            <input type="radio" name="type" value="total" onclick="sortByTotal()" />高考人数
+        </label>
+    </div>
+    <table style="width:240px;" cellpadding="0" cellspacing="0">
+        <thead>
+            <th>排名</th>
+            <th>省(市)</th>
+            <th>考生数</th>
+            <th>录取率</th>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
 </div>
 <script>
     var container,
@@ -81,7 +60,7 @@
     var projection = d3.geo.mercator()
             .scale(width/2)                                   //对地图进行缩放
             .translate([width / 2, height / 2])                 //将地图平移到屏幕中间
-            .rotate([-105, 0])
+            .rotate([-110, 0])
             .center([0, 37.5])                                  //设置中心点，调整到屏幕中心
     ;
 
@@ -173,6 +152,7 @@
         });
 
         buildTip(data);
+        showOnTable(data);
     }
 
     /**
@@ -188,7 +168,7 @@
         //创建过度颜色,注意上一步的排序是从大到小，那么颜色应该是从深到浅
         var rateColors = d3.scale.linear()
                 .domain([1, 340])
-                .range([d3.rgb(20, 20, 140),d3.rgb(180, 180, 255)]);
+                .range([d3.rgb(20, 120, 140),d3.rgb(180, 230, 255)]);
 //                .range([d3.rgb(30, 40, 160),d3.rgb(180, 160, 255)]);
         /*
         遍历上一步得到是数组
@@ -206,6 +186,29 @@
         });
 
         buildTip(data);
+        showOnTable(data);
+    }
+
+    //在table中显示数据
+    function showOnTable(data){
+        var t = d3.select("#tbody");
+        t.selectAll("tr").remove();
+        t.selectAll("tr")
+                .data(data)
+                .enter()
+                .insert("tr")
+                .html(function(d,i){
+                    return "<td>"+(i+1)+"</td>" +
+                            "<td>"+ d.province+"</td>" +
+                            "<td>"+ d.total+"</td>" +
+                            "<td>"+ d.rate+"</td>";
+                })
+                .style("opacity", 0)
+                .transition()
+                .duration(100)
+                .delay(function(d,i){return 10*i;})
+                .style("opacity", 1)
+        ;
     }
 
     /**
@@ -323,4 +326,6 @@
 
     }
 </script>
-<@nerve.footer/>
+<@nerve.footer>
+    <@nerve.aboutme/>
+</@nerve.footer>
