@@ -1,8 +1,9 @@
 {
-    "_title": "2013年一本录取率排名（单位:万人）",
+    "_title": "2013年一本录取率排名",
     "datas": [
         {
             "enter": 1.5447,
+            "id": "TIANJIN",
             "index": 1,
             "province": "天津",
             "rate": "24.52%",
@@ -10,6 +11,7 @@
         },
         {
             "enter": 1.7686,
+            "id": "BEIJING",
             "index": 2,
             "province": "北京",
             "rate": "24.33%",
@@ -17,6 +19,7 @@
         },
         {
             "enter": 1.2,
+            "id": "SHANGHAI",
             "index": 3,
             "province": "上海",
             "rate": "22.64%",
@@ -24,6 +27,7 @@
         },
         {
             "enter": 0.6837,
+            "id": "QINGHAI",
             "index": 4,
             "province": "青海",
             "rate": "18.61%",
@@ -31,6 +35,7 @@
         },
         {
             "enter": 9.351,
+            "id": "SHANDONG",
             "index": 5,
             "province": "山东",
             "rate": "18.37%",
@@ -38,6 +43,7 @@
         },
         {
             "enter": 1.001,
+            "id": "NINGXIA",
             "index": 6,
             "province": "宁夏",
             "rate": "17.05%",
@@ -45,6 +51,7 @@
         },
         {
             "enter": 2.2435,
+            "id": "JILIN",
             "index": 7,
             "province": "吉林",
             "rate": "14.47%",
@@ -52,6 +59,7 @@
         },
         {
             "enter": 3.6186,
+            "id": "FUJIAN",
             "index": 8,
             "province": "福建",
             "rate": "14.19%",
@@ -59,6 +67,7 @@
         },
         {
             "enter": 3.4369,
+            "id": "GUIZHOU",
             "index": 9,
             "province": "贵州",
             "rate": "13.87%",
@@ -66,6 +75,7 @@
         },
         {
             "enter": 4.1887,
+            "id": "ZHEJIANG",
             "index": 10,
             "province": "浙江",
             "rate": "13.38%",
@@ -73,6 +83,7 @@
         },
         {
             "enter": 4.8422,
+            "id": "SHAANXI",
             "index": 11,
             "province": "陕西",
             "rate": "13.21%",
@@ -80,6 +91,7 @@
         },
         {
             "enter": 2.05,
+            "id": "XINJIANG",
             "index": 12,
             "province": "新疆",
             "rate": "12.92%",
@@ -87,6 +99,7 @@
         },
         {
             "enter": 3.0179,
+            "id": "YUNNAN",
             "index": 13,
             "province": "云南",
             "rate": "12.79%",
@@ -94,6 +107,7 @@
         },
         {
             "enter": 0.6396,
+            "id": "HAINAN",
             "index": 14,
             "province": "海南",
             "rate": "11.42%",
@@ -101,6 +115,7 @@
         },
         {
             "enter": 2.163,
+            "id": "NEIMENGGU",
             "index": 15,
             "province": "内蒙古",
             "rate": "11.21%",
@@ -108,6 +123,7 @@
         },
         {
             "enter": 2.9598,
+            "id": "GANSU",
             "index": 16,
             "province": "甘肃",
             "rate": "10.46%",
@@ -115,6 +131,7 @@
         },
         {
             "enter": 5.1692,
+            "id": "ANHUI",
             "index": 17,
             "province": "安徽",
             "rate": "10.12%",
@@ -122,6 +139,7 @@
         },
         {
             "enter": 4.5085,
+            "id": "JIANGSU",
             "index": 18,
             "province": "江苏",
             "rate": "10.00%",
@@ -129,6 +147,7 @@
         },
         {
             "enter": 3.5789,
+            "id": "HUNAN",
             "index": 19,
             "province": "湖南",
             "rate": "9.59%",
@@ -136,6 +155,7 @@
         },
         {
             "enter": 1.9931,
+            "id": "HEILONGJIANG",
             "index": 20,
             "province": "黑龙江",
             "rate": "9.58%",
@@ -143,6 +163,7 @@
         },
         {
             "enter": 2.195,
+            "id": "CHONGQING",
             "index": 21,
             "province": "重庆",
             "rate": "9.34%",
@@ -150,6 +171,7 @@
         },
         {
             "enter": 2.4891,
+            "id": "JIANGXI",
             "index": 22,
             "province": "江西",
             "rate": "9.07%",
@@ -157,6 +179,7 @@
         },
         {
             "enter": 4.0602,
+            "id": "HEBEI",
             "index": 23,
             "province": "河北",
             "rate": "9.03%",
@@ -164,6 +187,7 @@
         },
         {
             "enter": 3.5923,
+            "id": "HUBEI",
             "index": 24,
             "province": "湖北",
             "rate": "8.20%",
@@ -171,6 +195,7 @@
         },
         {
             "enter": 2.3,
+            "id": "GUANGXI",
             "index": 25,
             "province": "广西",
             "rate": "7.72%",
@@ -178,6 +203,7 @@
         },
         {
             "enter": 4.8655,
+            "id": "HENAN",
             "index": 26,
             "province": "河南",
             "rate": "6.79%",
@@ -185,6 +211,7 @@
         },
         {
             "enter": 4.3092,
+            "id": "GUANGDONG",
             "index": 27,
             "province": "广东",
             "rate": "5.93%",
@@ -192,6 +219,7 @@
         },
         {
             "enter": 2.1091,
+            "id": "SHANXI",
             "index": 28,
             "province": "山西",
             "rate": "5.89%",
@@ -199,6 +227,7 @@
         },
         {
             "enter": 1.4583,
+            "id": "LIAONING",
             "index": 29,
             "province": "辽宁",
             "rate": "5.74%",
@@ -206,6 +235,7 @@
         },
         {
             "enter": 2.849,
+            "id": "SICHUAN",
             "index": 30,
             "province": "四川",
             "rate": "5.28%",
@@ -213,6 +243,7 @@
         },
         {
             "enter": 0.0904,
+            "id": "XIZANG",
             "index": 31,
             "province": "西藏",
             "rate": "4.78%",

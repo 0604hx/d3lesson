@@ -43,7 +43,7 @@
 					]
 				]
 			},
-			"id" : "TWN"
+			"id" : "TAIWAN"
 		},
 		{
 			"type" : "Feature",
@@ -101,7 +101,7 @@
 					]
 				]
 			},
-			"id" : "GDS"
+			"id" : "GUANGDONG"
 		},
 		{
 			"type" : "Feature",
@@ -120,7 +120,7 @@
 					]
 				]
 			},
-			"id" : "HK"
+			"id" : "XIANGGANG"
 		},
 		{
 			"type" : "Feature",
@@ -177,7 +177,7 @@
 						[118.42764588, 28.29188164], [118.71191249, 28.31414678]]
 				]
 			},
-			"id" : "FJ"
+			"id" : "FUJIAN"
 		},
 		{
 			"type" : "Feature",
@@ -216,7 +216,7 @@
 					]
 				]
 			},
-			"id" : "GZ"
+			"id" : "GUIZHOU"
 		},
 		{
 			"type" : "Feature",
@@ -272,7 +272,7 @@
 					]
 				]
 			},
-			"id" : "YN"
+			"id" : "YUNNAN"
 		},
 		{
 			"type" : "Feature",
@@ -352,7 +352,7 @@
 					]
 				]
 			},
-			"id" : "ZJ"
+			"id" : "ZHEJIANG"
 		},
 		{
 			"type" : "Feature",
@@ -388,7 +388,7 @@
 					]
 				]
 			},
-			"id" : "CQ"
+			"id" : "CHONGQING"
 		},
 		{
 			"type" : "Feature",
@@ -404,7 +404,7 @@
 					]
 				]
 			},
-			"id" : "SH"
+			"id" : "SHANGHAI"
 		},
 		{
 			"type" : "Feature",
@@ -477,7 +477,7 @@
 						[118.86069039, 35.03175616], [119.24112624, 35.12484476]]
 				]
 			},
-			"id" : "JS"
+			"id" : "JIANGSU"
 		},
 		{
 			"type" : "Feature",
@@ -570,7 +570,7 @@
 					]
 				]
 			},
-			"id" : "XZ"
+			"id" : "XIZANG"
 		},
 		{
 			"type" : "Feature",
@@ -611,7 +611,7 @@
 						[115.33481736, 36.38505865]]
 				]
 			},
-			"id" : "SD"
+			"id" : "SHANDONG"
 		},
 		{
 			"type" : "Feature",
@@ -666,7 +666,7 @@
 						[96.93303118, 38.96464848], [97.01871464, 39.21010674]]
 				]
 			},
-			"id" : "QH"
+			"id" : "QINGHAI"
 		},
 		{
 			"type" : "Feature",
@@ -686,7 +686,7 @@
 						[117.20361199, 40.08041332]]
 				]
 			},
-			"id" : "TIANJING"
+			"id" : "TIANJIN"
 		}, {
 			"type" : "Feature",
 			"properties" : {
@@ -770,7 +770,7 @@
 					]
 				]
 			},
-			"id" : "JILING"
+			"id" : "JILIN"
 		},
 		{
 			"type" : "Feature",
@@ -830,7 +830,7 @@
 					]
 				]
 			},
-			"id" : "XINGJIANG"
+			"id" : "XINJIANG"
 		},
 		{
 			"type" : "Feature",
@@ -1359,7 +1359,7 @@
 						[111.14750099, 39.56036568]]
 				]
 			},
-			"id" : "SHANXI"
+			"id" : "SHAANXI"
 		}
 
 	]

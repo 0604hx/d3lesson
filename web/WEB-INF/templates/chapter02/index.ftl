@@ -1,6 +1,63 @@
 <@nerve.header title="chapter01:创建svg元素">
     <@nerve.d3 />
 </@nerve.header>
+<style>
+    #tooltip {
+        position: absolute;
+        width: 200px;
+        height: auto;
+        padding: 10px;
+        background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        z-index: 999;
+        font-size: 12px;
+    }
+
+    #tooltip.hidden {
+        display: none;
+    }
+
+    #tooltip p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .controls {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        text-align: right;
+        font-size: 14px;
+    }
+</style>
+<!--div提示框-->
+<div id="tooltip" class="hidden">
+    <p>
+        <strong class="dataHolder" name="province"></strong>
+        排名:<span class="dataHolder" name="sort"></span>
+    </p>
+    <div>
+        高考人数:<span class="dataHolder" name="total"></span>万&nbsp;
+        录取率:<span class="dataHolder" name="rate"></span>
+    </div>
+</div>
+<div class="controls">
+    查看方式：
+    <label>
+        <input type="radio" name="type" value="rate" checked="checked" onclick="sortByRate()" />录取率
+    </label>
+    <label>
+        <input type="radio" name="type" value="total" onclick="sortByTotal()" />高考人数
+    </label>
+</div>
 <script>
     var container,
             width = window.innerWidth,
@@ -16,7 +73,7 @@
         countryColor: d3.scale.linear()
                 .domain([1, 34])
                 .range([d3.rgb(255, 255, 180),d3.rgb(130, 140, 20)]),
-        selectColor:"#6a6a6a"
+        strokeColor:"#6a6a6a"
     }
 
     // Project from latlng to pixel coords
@@ -42,21 +99,10 @@
                 .attr("id", function(d){
                     return d.id;
                 })
-                .attr("fill", function(d,i){
-                    console.log(i+"  "+ d.id);
-                    return setting.countryColor(i+2);
-                })
+                .attr("fill", "#000000")
                 .attr("d", path)
-                .attr('stroke','#6a6a6a')
+                .attr('stroke',setting.strokeColor)
                 .attr('stroke-width','0.7px')
-                .on("mouseover", function(){
-                    d3.select(this)
-                            .attr("opacity", 0.8);
-                })
-                .on("mouseout",function(){
-                    d3.select(this)
-                            .attr("opacity", 1.0);
-                })
         ;
     }
 
@@ -84,6 +130,168 @@
         ;
     }
 
+    //显示标题
+    function showTitle(){
+        container.append("text")
+                .attr("x", width/2)
+                .attr("y", 100)
+                .attr("text-anchor", "middle")
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "20px")
+                .attr("font-weight", "bold")
+                .attr("fill", "black")
+                .text(gkData._title)
+        ;
+    }
+    /**
+     * 根据录取率排序
+     */
+    function sortByRate(){
+        //首先我们需要对数据进行录取率从大到小的排序
+        //因为rate 是 xx.xx% 的格式，所以在对比前需要进行parseFloat 的操作
+        var data = gkData.datas.sort(function(d1,d2){
+            return parseFloat(d2.rate) - parseFloat(d1.rate);
+        });
+
+        //创建过度颜色,注意上一步的排序是从大到小，那么颜色应该是从深到浅
+        var rateColors = d3.scale.linear()
+                    .domain([1, 340])
+                    .range([d3.rgb(130, 140, 20),d3.rgb(255, 255, 180)]);
+        /*
+        遍历上一步得到是数组
+        forEach 参数中的 d 就是遍历到的某个数据， i 就是该对象的下标序号，从0开始
+        */
+        data.forEach(function(d,i){
+            d.sort = i+1;
+            //通过d.id 来获取中国地图上对应的省份，因为地图中的省份块是根据省份拼音命名的
+            d3.select("#"+ d.id)
+                    .transition()
+                    .duration(duration)
+                    .delay(10*i)
+                    .attr("fill", rateColors((i+1)*10))
+            ;
+        });
+
+        buildTip(data);
+    }
+
+    /**
+     * 根据参加高考人数排序
+     */
+    function sortByTotal(){
+        //首先我们需要对数据进行录取率从大到小的排序
+        //因为rate 是 xx.xx% 的格式，所以在对比前需要进行parseFloat 的操作
+        var data = gkData.datas.sort(function(d1,d2){
+            return d2.total - d1.total;
+        });
+
+        //创建过度颜色,注意上一步的排序是从大到小，那么颜色应该是从深到浅
+        var rateColors = d3.scale.linear()
+                .domain([1, 340])
+                .range([d3.rgb(20, 20, 140),d3.rgb(180, 180, 255)]);
+//                .range([d3.rgb(30, 40, 160),d3.rgb(180, 160, 255)]);
+        /*
+        遍历上一步得到是数组
+        forEach 参数中的 d 就是遍历到的某个数据， i 就是该对象的下标序号，从0开始
+        */
+        data.forEach(function(d,i){
+            d.sort = i+1;
+            //通过d.id 来获取中国地图上对应的省份，因为地图中的省份块是根据省份拼音命名的
+            d3.select("#"+ d.id)
+                    .transition()
+                    .duration(duration)
+                    .delay(10*i)
+                    .attr("fill", rateColors((i+1)*10))
+            ;
+        });
+
+        buildTip(data);
+    }
+
+    /**
+     * 创建提示条
+     * 提示的创建大致有3种方式
+     * 1： 给svg元素里面增加一个title元素，
+     *     var t = d3.select(id).append("title").text("我是提示条");
+     *      这种方法效果不大理想，而且提示单调
+     *
+     * 2： 给需要提示的元素添加mouseover， mouseout 事件，当鼠标在该元素上移动时，就显示提示条（动态创建的svg元素），如：
+     *      var t = d3.select(id);
+     *      t.on('mouseover',function(){
+     *          //创建提示条
+                svg.append("text")
+                  .attr("id", "tooltip")
+                  .attr("x", d3.event.x)
+                  .attr("y", d3.event.y)
+                  .attr("text-anchor", "middle")
+                  .attr("font-family", "sans-serif")
+                  .attr("font-size", "11px")
+                  .attr("font-weight", "bold")
+                  .attr("ﬁll", "black")
+                  .text("我是svg的提示条");
+                })
+     *      });
+     *
+     * 3： 类似方法2，但是提示条不是svg元素，而是普通的html元素（如div），动态修改提示框里面的内容跟提示框的x，y坐标
+     *      达到提示的效果，总体来说这个方法较好，较为灵活，而且可以使用css3，同时不用担心提示框超出svg范围的问题
+     *
+     *      所以，在教程中，都是使用这个方法
+     */
+    function buildTip(data){
+        var t = "#tooltip";
+        chinaG.selectAll("path")
+                .data(data, function(d){
+                    return d.id;
+                })
+                .on("mouseover",function(d){
+                    d3.select(t)
+                            .style("left", d3.event.x + "px")
+                            .style("top", d3.event.y + "px")
+                            .classed("hidden", false)
+                            .selectAll(".dataHolder")[0]
+                            .forEach(function(h){
+                                h = d3.select(h);
+                                h.html(d[h.attr('name')]);
+                            })
+                    ;
+                    d3.select(this)
+                            .attr("opacity", 0.8);
+                })
+                .on("mouseout",function(){
+                    d3.select(t).classed("hidden", true);
+                    d3.select(this)
+                            .attr("opacity", 1);
+                })
+        ;
+    }
+
+    /**
+     *  保存了高考各省份的录取数据，格式为：
+     *  {
+        "_title": "2013年一本录取率排名",
+        "datas": [
+            {
+                "enter": 1.5447,                //录取总人数，单位万人
+                "id": "TIANJIN",                //省份拼音
+                "index": 1,                     //录取率排行
+                "province": "天津",             //省份
+                "rate": "24.52%",               //录取率
+                "total": 6.3                    //总的参加高考人数，单位万人
+            },
+            {
+                "enter": 1.7686,
+                "id": "BEIJING",
+                "index": 2,
+                "province": "北京",
+                "rate": "24.33%",
+                "total": 7.27
+            },
+            ..... 其他省份的数据
+        }
+
+        注意，陕西跟陕西的拼音是一样的，所以陕西这里用SHAANXI，详见：http://www.guokr.com/question/348575/
+    */
+    var gkData;
     window.onload = function(){
         //同时生成随机的颜色值
         colors = d3.scale.category20b();
@@ -105,6 +313,12 @@
                     }
                     drawChina(china);
                     console.log(gks);
+
+                    gkData = gks;
+                    if(gkData){
+                        showTitle();
+                        sortByRate();
+                    }
                 });
 
     }

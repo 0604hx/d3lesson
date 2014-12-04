@@ -1,7 +1,9 @@
 package org.nerve.d3lesson.common.tools.impl;
 
 import com.alibaba.fastjson.JSON;
+import org.nerve.d3lesson.common.tools.PinyinTool;
 import org.nerve.d3lesson.common.tools.TxtImporter;
+import org.nerve.d3lesson.common.tools.TxtLineDataFixer;
 
 import java.util.*;
 
@@ -20,6 +22,7 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
     private long index = 0;
     private String columns[] ;
     private String reg = "[\\s]{1,}";       //正则表达式，删除多余空格用的
+    private TxtLineDataFixer fixer;
 
     public static final String TITLE = "_title";
     public static final String DATAS = "datas";
@@ -32,6 +35,11 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
         columns = names;
     }
 
+    public TxtToJSONImporter(String fileName,String[] names, TxtLineDataFixer fixer) throws Exception{
+        this(fileName, names);
+
+        this.fixer = fixer;
+    }
     @Override
     public void doWithLine(String line) throws Exception {
         //获取标题
@@ -71,6 +79,8 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
     }
 
     private void addLine(Map<String, Object> d){
+        if(fixer != null)
+            fixer.fix(d);
         ((List<Map<String, Object>>)map.get(DATAS)).add(d);
     }
 
@@ -84,9 +94,27 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
      * @param a
      */
     public static void main(String[] a) throws Exception{
+        final PinyinTool pyTool = new PinyinTool();
         TxtImporter imp = new TxtToJSONImporter(
                 "C:\\Users\\zengxm\\Desktop\\2013GKLQL.txt",
-                new String[]{"index","province","total", "enter","rate"});
+                new String[]{"index","province","total", "enter","rate"},
+                new TxtLineDataFixer() {
+                    @Override
+                    public void fix(Object obj) {
+                        Map<String, Object> map = (Map<String, Object>)obj;
+                        if(obj != null){
+                            if(map.containsKey("province")){
+                                Object p = map.get("province");
+                                try{
+                                    map.put("id", pyTool.toPinYin((String)p,""));
+                                }catch(Exception e){
+                                    map.put("id", p);
+                                }
+                            }
+                        }
+                    }
+                }
+        );
 
         imp.run();
         System.out.println(imp.toString());
