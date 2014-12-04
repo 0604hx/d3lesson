@@ -3,6 +3,9 @@ d3lesson 是D3.js的系列教程源码，旨在分享我在运用D3.js + canvas�
 
 项目是在 java8 下开发，使用servlet作为controller，freemarker作视图。
 
+#chapter 01
+
+
 #about me
 我的邮箱：zxingming@qq.com
 
