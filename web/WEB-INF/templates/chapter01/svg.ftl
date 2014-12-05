@@ -27,16 +27,16 @@
         //打印data的内容
         console.log("circle个数:"+data.length,data);
 
-        container.selectAll("rect.child")                            //选择container下的全部class=child的div元素，此时获取的其实是一个空的集合，这里叫他A
-                .data(data)                                         //为集合A分配数据，此时，A的长度与data一致，而且每个元素分别对应data中的一个元素
-                .enter()                                            //调用enter（）方法，可以理解成进入集合中某一个元素，这里就是div元素
-                .append("rect")                                      //因为一开始没有div元素，所以要创建一个
-                .attr("class","child")                              //给div赋予 child 这个class
-                .attr("x", function(d){return px(d.x);})      //给div设置左边的位移
-                .attr("y", function(d){return px(d.y);})       //给div设置顶部的位移
-                .attr("width", function(d){return px(d.width);}) //给div设置宽度
+        container.selectAll("rect.child")                               //选择container下的全部class=child的div元素，此时获取的其实是一个空的集合，这里叫他A
+                .data(data)                                             //为集合A分配数据，此时，A的长度与data一致，而且每个元素分别对应data中的一个元素
+                .enter()                                                //调用enter（）方法，可以理解成进入集合中某一个元素，这里就是div元素
+                .append("rect")                                         //因为一开始没有div元素，所以要创建一个
+                .attr("class","child")                                  //给div赋予 child 这个class
+                .attr("x", function(d){return px(d.x);})            //给div设置左边的位移
+                .attr("y", function(d){return px(d.y);})            //给div设置顶部的位移
+                .attr("width", function(d){return px(d.width);})    //给div设置宽度
                 .attr("height", function(d){return px(d.width);})
-                .attr("fill", function(d, i){               //给div设置背景颜色
+                .attr("fill", function(d, i){                       //给div设置背景颜色
                     return colors(i);
                 })
                 .on("mouseenter",function(e){
@@ -104,6 +104,7 @@
                 .attr("id",id)
                 .attr("width",w)
                 .attr("height",h)
+                .style("position","absolute")
         ;
     }
 
