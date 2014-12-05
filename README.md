@@ -31,6 +31,9 @@ d3.selectAll("div.test")
 
 #Chapter 02
 这一章是一个应用实例，在中国地图上展示了2013年大陆各省份高考一本录取率的排行数据，使用颜色的深浅来表示录取率的高低。同时也可以对高考人数进行排行。
+效果图
+![根据录取率排行](http://img.blog.csdn.net/20141205112831406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3NyYzA2MDRoeA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![根据高考人数排行](http://img.blog.csdn.net/20141205112919843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3NyYzA2MDRoeA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 #about me
 我的邮箱：zxingming@qq.com
