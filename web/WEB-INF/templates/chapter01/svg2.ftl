@@ -44,6 +44,7 @@
                 .attr("id",id)
                 .attr("width",w)
                 .attr("height",h)
+                .style("position","absolute")
         ;
     }
 
