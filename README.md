@@ -9,7 +9,7 @@ d3lesson 是D3.js的系列教程源码，旨在分享我在运用D3.js + canvas�
 示例中包含了d3.js对html元素（div，p，span这些）的操作（增删改），也包含了对svg元素（circle 圆，rect 矩形，line 线条等）的操作。
 
 这里重点说一下d3中的data函数，如下：
-
+```javascript
 //创建一个长度为10的整形数组, 得到的是： [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 var data = d3.range(10);
 //然后可以利用这个数组，创建10个对应的div元素，数组中的每个对象对应一个div
@@ -27,6 +27,7 @@ d3.selectAll("div.test")
         return d;
     })
     ;
+```
 
 #Chapter 02
 这一章是一个应用实例，在中国地图上展示了2013年大陆各省份高考一本录取率的排行数据，使用颜色的深浅来表示录取率的高低。同时也可以对高考人数进行排行。
@@ -34,4 +35,4 @@ d3.selectAll("div.test")
 #about me
 我的邮箱：zxingming@qq.com
 
-我的博客：[blog.csdn.net/ssrc0604hx](blog.csdn.net/ssrc0604hx)
+我的博客：[blog.csdn.net/ssrc0604hx](http://blog.csdn.net/ssrc0604hx)
