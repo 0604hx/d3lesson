@@ -23,4 +23,10 @@ public interface TxtImporter {
 	public void run() throws Exception;
 	
 	public void setFile(String filepath);
+
+    /**
+     * 获取最终的数据
+     * @return
+     */
+    public Object getData();
 }

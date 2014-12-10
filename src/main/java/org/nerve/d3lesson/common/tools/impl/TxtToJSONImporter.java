@@ -49,6 +49,10 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
             map.put(DATAS, list);
         }else{
             Map<String, Object> d = new HashMap<String, Object>();
+
+            if(fixer != null)
+                line = fixer.before(line);
+
             String ds[] = line.replaceAll(reg," ").trim().split(" ");
 
             int ci = 0;
@@ -64,7 +68,6 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
                     }
 
                     ci++;
-                    System.out.println(ci+", "+ds[i]);
                     if(ci >= columns.length)
                         continue;
                 }
@@ -87,6 +90,11 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
     @Override
     public String toString() {
         return JSON.toJSONString(map);
+    }
+
+    @Override
+    public Object getData() {
+        return map;
     }
 
     /**
@@ -112,6 +120,11 @@ public class TxtToJSONImporter extends AbstractTxtLineImporter {
                                 }
                             }
                         }
+                    }
+
+                    @Override
+                    public String before(String line) {
+                        return null;
                     }
                 }
         );

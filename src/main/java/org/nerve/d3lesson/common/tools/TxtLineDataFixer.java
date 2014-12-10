@@ -18,4 +18,11 @@ package org.nerve.d3lesson.common.tools;
 public interface TxtLineDataFixer {
 
     public void fix(Object obj);
+
+    /**
+     * 在处理一行数据前，要做的一些操作
+     * @param line
+     * @return
+     */
+    public String before(String line);
 }
