@@ -4,8 +4,8 @@
 <style>
     body {
         overflow: hidden;
-        margin: 0;
-        background: #161616 url(${IMAGES}/pattern_40.gif) top left repeat;
+        background: #ffffff;
+        width: 100%;
         font-family: "Oswald", "Open Sans", sans-serif;
         padding:0px; margin: 0px;
     }
@@ -33,11 +33,43 @@
 
     .topTitle {position: absolute; top:2px; left:48%;}
     .cityName {pointer-events: none;}
+
+    .content-wrap {}
+    .backBg {background: #161616 url(${IMAGES}/pattern_40.gif) top left repeat;color:#ffffff;}
+    .whiteBg {background: #fff;}
 </style>
 <div class="loading">
     <div class="ball"></div>
     <div class="ball1"></div>
 </div>
+<!--隐藏的菜单-->
+<div class="menu-wrap whiteBg">
+    <nav class="menu-side">
+        <h3>程序设置</h3>
+        <div>
+            背景色：
+            <label><input type="radio" name="control_bg" value="backBg" checked="checked"/>黑色</label>
+            <label><input type="radio" name="control_bg" value="whiteBg"/>白色</label>
+        </div>
+        <div>
+            城市名：
+            <label><input type="radio" name="control_cityname" value="1" checked="checked"/>显示</label>
+            <label><input type="radio" name="control_cityname" value="0"/>隐藏</label>
+        </div>
+        <span id="close-button">关闭</span>
+        <div class="about" style="border: 1px solid #d7d7d7;font-weight: normal;padding: 5px;font-size: 12px;">
+            <b>说明</b>
+        </div>
+    </nav>
+</div>
+<button class="menu-button" id="open-button">Open Menu</button>
+
+<!--svg元素-->
+<svg class="content-wrap backBg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="container" xml:space="preserve">
+    <defs>
+        <image height="12" width="12" xlink:href="${IMAGES}/icons/globe.png" id="icon_globe"/>
+    </defs>
+</svg>
 <!--div提示框-->
 <div id="tooltip" class="hidden box">
     <p>
@@ -49,12 +81,6 @@
         录取率:<span class="dataHolder" name="rate"></span>
     </div>
 </div>
-<!--svg元素-->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="container" xml:space="preserve">
-    <defs>
-        <image height="12" width="12" xlink:href="${IMAGES}/icons/globe.png" id="icon_globe"/>
-    </defs>
-</svg>
 <script>
     var container,
             width = window.innerWidth,
@@ -74,6 +100,7 @@
     //默认为-1，当加载完中国地图后，变成0
     var scaleLevel = -1;
     var setting = {
+        cityName:true,
         countryColor: d3.scale.linear()
                 .domain([1, 34])
                 .range([d3.rgb(255, 255, 180),d3.rgb(130, 140, 20)]),
@@ -260,6 +287,7 @@
                 });
             }
         }
+        d3.event.stopPropagation();
     }
     function provinceClicked(d) {
         if (active.node() === this) return reset();
@@ -283,7 +311,7 @@
         //设置其他的省份的透明度
         chinaG.selectAll("path").classed("noactive", true);
         resetBgColor("path.active");
-
+        d3.event.stopPropagation();
     }
 
     function resetBgColor(selector){
@@ -309,6 +337,7 @@
                 setLevel(0);
             });
         }
+        d3.event.stopPropagation();
     }
 
     /**
@@ -377,16 +406,32 @@
                 .classed("hide", true);
         container.classed("hide", false);
 
-//        d3.select("body".append("text")
-//                .attr("x", width/2)
-//                .attr("y", 30)
-//                .attr("text-anchor", "middle")
-//                .attr("font-family", "sans-serif")
-//                .attr("font-size", "20px")
-//                .attr("font-weight", "bold")
-//                .attr("fill", "#adadad")
-//                .text("世界地图")
-//        ;
+        bindMunuControl();
+    }
+
+    //菜单设置
+    function bindMunuControl(){
+        d3.selectAll("[name=control_bg]")
+                .on("click",function(){
+                    var c = d3.select(this).attr("value");
+                    //如果选择黑色，那么地图背景为黑色，body为白色
+                    if(c == "backBg"){
+                        d3.select("#container").classed("whiteBg", false).classed(c, true);
+                        d3.select("body").classed(c, false).classed("whiteBg", true);
+                        d3.select(".menu-wrap").classed(c, false).classed("whiteBg", true);
+                    }else{
+                        d3.select("#container").classed("backBg", false).classed(c, true);
+                        d3.select("body").classed(c, false).classed("backBg", true);
+                        d3.select(".menu-wrap").classed(c, false).classed("backBg", true);
+                    }
+                })
+        ;
+        d3.selectAll("[name=control_cityname]")
+                .on("click",function(){
+                    var c = d3.select(this).attr("value");
+                    showCityName(c=="1");
+                })
+        ;
     }
 
     var cities;     //中国城市
@@ -426,5 +471,6 @@
     }
 </script>
 <@nerve.footer>
+    <script src="${JS}/menu.js" type="text/javascript"></script>
     <@nerve.aboutme/>
 </@nerve.footer>

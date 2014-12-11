@@ -35,6 +35,13 @@ d3.selectAll("div.test")
 ![根据录取率排行](http://img.blog.csdn.net/20141205112831406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3NyYzA2MDRoeA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ![根据高考人数排行](http://img.blog.csdn.net/20141205112919843?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc3NyYzA2MDRoeA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
+#Chapter 03
+演示的是一个级联地图：
+默认显示的是世界地图
+点击中国切换到中国地图（这里使用的不是放大世界地图，而是切换到中国地图，两者使用的是不同的 geoJSON，在中国地图级别，只显示省会城市）
+点击省份可以切换到省份大图（这里是将中国地图放大，同时显示省份的城市）
+
+
 #about me
 我的邮箱：zxingming@qq.com
 

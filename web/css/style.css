@@ -1,6 +1,6 @@
 /*样式文件 by 集成显卡*/
 body {margin: 0px; padding: 0px;}
-
+.hide {display: none;}
 .controls {position: absolute; top: 0px; width: 100%;left: 0px; z-index: 100; font-size: 14px;}
 .footer {position: fixed; bottom: 0px; background-color: #fafafa;font-size: 12px; color:#a7a7a7; text-align: center;width: 100%; border-top: 1px solid #eaeaea; padding: 5px;}
 .box {
@@ -35,3 +35,213 @@ body {margin: 0px; padding: 0px;}
     font-size: 16px;
     line-height: 20px;
 }
+
+.loading {
+    z-index:9999;
+    position: absolute;
+    top:45%;
+    left: 49%;
+}
+.loading .ball {
+    background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(0,183,229,0.9);
+    opacity: .9;
+    border-top: 5px solid rgba(0,0,0,0);
+    border-left: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 35px #2187e7;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    -moz-animation: spin .5s infinite linear;
+    -webkit-animation: spin .5s infinite linear;
+}
+.loading .ball1 {
+    background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(0,183,229,0.9);
+    opacity: .9;
+    border-top: 5px solid rgba(0,0,0,0);
+    border-left: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 15px #2187e7;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    top: -50px;
+    -moz-animation: spinoff .5s infinite linear;
+    -webkit-animation: spinoff .5s infinite linear;
+}
+
+@-moz-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+    };
+}
+
+@-moz-keyframes spinoff {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(-360deg);
+    };
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    };
+}
+
+@-webkit-keyframes spinoff {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(-360deg);
+    };
+}
+
+.trigger, .triggerFull, .triggerBar {
+    background: #000000;
+    background: -moz-linear-gradient(top, #161616 0%, #000000 100%);
+    background: -webkit-linear-gradient(top, #161616 0%,#000000 100%);
+    border-left: 1px solid #111;
+    border-top: 1px solid #111;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 0.8em;
+    text-decoration: none;
+    text-transform: lowercase;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+/*
+菜单
+*/
+.content-wrap {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+/* Overlay */
+.content::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    content: '';
+    opacity: 0;
+    -webkit-transform: translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
+    -webkit-transition: opacity 0.3s, -webkit-transform 0s 0.3s;
+    transition: opacity 0.3s, transform 0s 0.3s;
+}
+
+/* Menu Button */
+.menu-button {
+    position: fixed;
+    z-index: 1000;
+    margin: 1em;
+    padding: 0;
+    width: 2.5em;
+    height: 2.25em;
+    border: none;
+    text-indent: 2.5em;
+    font-size: 1.5em;
+    color: transparent;
+    background: transparent;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.menu-button::before {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    bottom: 0.5em;
+    left: 0.5em;
+    background: linear-gradient(#373a47 20%, transparent 20%, transparent 40%, #373a47 40%, #373a47 60%, transparent 60%, transparent 80%, #373a47 80%);
+    content: '';
+}
+
+.menu-button:hover {
+    opacity: 0.6;
+}
+/* Menu */
+.menu-wrap {
+    position: absolute;
+    font-weight: 700;
+    min-width: 260px;
+    opacity: 0;
+    -webkit-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+}
+.menu-side>div {
+    padding: 1.2em;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.menu-side #close-button{
+    padding: 5px;
+    cursor: pointer;
+    color: #4585e9;
+    text-align: right;
+    width: 100%;
+    display: block;
+}
+
+@media screen and (max-width: 32em) {
+    .icon-list {
+        padding-left: 1em;
+    }
+}
+.menu-side a {
+    display: block;
+    padding: 1.2em;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.menu-side a:first-child {
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+/* Shown menu */
+.show-menu .menu-wrap {
+    opacity: 1;
+}
+.show-menu .content-wrap,
+.show-menu .menu-button {
+    -webkit-transform: translate3d(300px,60px,0);
+    transform: translate3d(300px,60px,0);
+}
+.show-menu .content::before {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+/*
+菜单 END
+*/
