@@ -27,7 +27,7 @@
     /*没有被选中的省份*/
     .noactive {
         opacity: 0.4;
-        stroke:none;
+        /*stroke:none;*/
     }
 
     .topTitle {position: absolute; top:2px; left:48%;}
@@ -58,8 +58,12 @@
         <div>
             地图块颜色：
             <div>
-                <span class="c_ c_black" value="#000000"></span>
-                <span class="c_ c_blue" value="#11273E"></span>
+                <span class="c_ c_black"></span>
+                <span class="c_ c_blue"></span>
+                <span class="c_" style="background: rgb(230,179,61);"></span>
+                <span class="c_" style="background: rgb(38,188,213);"></span>
+                <span class="c_" style="background: rgb(205,201,125);"></span>
+                <span class="c_" style="background:  rgb(217,104,49);"></span>
                 <div class="clear"></div>
             </div>
         </div>
@@ -441,7 +445,7 @@
         ;
         d3.selectAll(".c_")
                 .on("click", function(){
-                    var c = d3.select(this).attr("value");
+                    var c = d3.select(this).style("background-color");
                     changePathColor(c);
                 })
         ;
