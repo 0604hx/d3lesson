@@ -26,8 +26,7 @@
     }
     /*没有被选中的省份*/
     .noactive {
-        fill: #dadada;
-        opacity: 0.6;
+        opacity: 0.4;
         stroke:none;
     }
 
@@ -55,6 +54,14 @@
             城市名：
             <label><input type="radio" name="control_cityname" value="1" checked="checked"/>显示</label>
             <label><input type="radio" name="control_cityname" value="0"/>隐藏</label>
+        </div>
+        <div>
+            地图块颜色：
+            <div>
+                <span class="c_ c_black" value="#000000"></span>
+                <span class="c_ c_blue" value="#11273E"></span>
+                <div class="clear"></div>
+            </div>
         </div>
         <span id="close-button">关闭</span>
         <div class="about" style="border: 1px solid #d7d7d7;font-weight: normal;padding: 5px;font-size: 12px;">
@@ -101,6 +108,7 @@
     var scaleLevel = -1;
     var setting = {
         cityName:true,
+        fill:"#000000",   //"#11273E" 蓝色
         countryColor: d3.scale.linear()
                 .domain([1, 34])
                 .range([d3.rgb(255, 255, 180),d3.rgb(130, 140, 20)]),
@@ -155,11 +163,10 @@
                 .attr("id", function(d){
                     return d.id;
                 })
-                .attr("fill", setting.countryColor)
+                .attr("fill", setting.fill)
                 .attr("d", worldPath)
                 .attr('stroke','#6a6a6a')
                 .attr('stroke-width','0.7px')
-                .attr("fill", setting.countryColor)
                 .on("click", countryClicked)
         ;
         drawChina(china);
@@ -178,10 +185,10 @@
                 .attr("id", function(d){
                     return d.id;
                 })
-                .attr("fill", "#000000")
+                .attr("fill", setting.fill)
                 .attr("d", path)
                 .attr('stroke',setting.strokeColor)
-                .attr('stroke-width','0.7px')
+                .attr('stroke-width','0.5px')
                 .on("click", provinceClicked)
         ;
         drawCity();
@@ -315,7 +322,7 @@
     }
 
     function resetBgColor(selector){
-        chinaG.selectAll(selector).classed("noactive", false).attr("fill","#000000").attr("opacity", 1);
+        chinaG.selectAll(selector).classed("noactive", false).attr("fill", setting.fill).attr("opacity", 1);
     }
     /**
      * 还原缩放
@@ -432,6 +439,17 @@
                     showCityName(c=="1");
                 })
         ;
+        d3.selectAll(".c_")
+                .on("click", function(){
+                    var c = d3.select(this).attr("value");
+                    changePathColor(c);
+                })
+        ;
+    }
+
+    function changePathColor(color){
+        setting.fill = color||setting.fill;
+        container.selectAll("path").attr("fill", setting.fill);
     }
 
     var cities;     //中国城市
