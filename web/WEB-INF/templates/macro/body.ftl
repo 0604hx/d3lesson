@@ -1,6 +1,7 @@
 <#global JS=base+"/js"/>
 <#global IMAGES = base+"/images"/>
 <#global CSS = base+"/css"/>
+<#global DATA = base+"/data"/>
 
 <#--头部模板-->
 <#macro header title="">
@@ -20,6 +21,15 @@
 
 <#--底部-->
 <#macro footer>
+    <#nested />
 </body>
 </html>
+</#macro>
+
+<#macro aboutme>
+<div class="footer">
+    by 集成显卡 1053214511@qq.com
+    <a href="blog.csdn.net/ssrc0604hx" target="_blank">我的博客</a>
+    建议分辨率：1024*768 以上
+</div>
 </#macro>

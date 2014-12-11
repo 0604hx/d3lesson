@@ -4,3 +4,9 @@
 <script src="${JS}/d3/queue.v1.min.js"></script>
 <script src="${JS}/d3/topojson.v1.min.js"></script>
 </#macro>
+
+<!--颜色选择器-->
+<#macro colorPicker>
+<script src='${RE}/spect/spectrum.js'></script>
+<link rel='stylesheet' href='${RE}/spect/spectrum.css' />
+</#macro>

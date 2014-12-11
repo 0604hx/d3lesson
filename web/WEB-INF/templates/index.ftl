@@ -18,9 +18,14 @@
                 <li>
                     <a href="chapter01?type=svg" target="_blank">使用D3创建svg元素（效果同上）</a>
                 </li>
+                <li>
+                    <a href="chapter01?type=svg2" target="_blank">使用D3操作基本svg元素</a>
+                </li>
             </ul>
         </li>
-
+        <li>
+            <a href="chapter02" target="_blank">实践：2013大陆各省份高考一本录取率展示</a>
+        </li>
     </ol>
     <div class="contact">
         联系我： 1053214511@qq.com <br />
