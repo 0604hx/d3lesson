@@ -122,7 +122,6 @@ body {margin: 0px; padding: 0px;}
     border-top: 1px solid #111;
     border-right: 1px solid #333;
     border-bottom: 1px solid #333;
-    font-family: Verdana, Geneva, sans-serif;
     font-size: 0.8em;
     text-decoration: none;
     text-transform: lowercase;
@@ -220,7 +219,7 @@ body {margin: 0px; padding: 0px;}
     cursor: pointer;
     color: #4585e9;
     text-align: right;
-    width: 100%;
+    width: 96%;
     display: block;
 }
 

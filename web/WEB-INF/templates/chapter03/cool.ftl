@@ -6,7 +6,7 @@
         overflow: hidden;
         background: #ffffff;
         width: 100%;
-        font-family: "Oswald", "Open Sans", sans-serif;
+        font-family:"Microsoft YaHei", "Oswald", "Open Sans", sans-serif;
         padding:0px; margin: 0px;
     }
 
@@ -36,6 +36,8 @@
     .content-wrap {}
     .backBg {background: #161616 url(${IMAGES}/pattern_40.gif) top left repeat;color:#ffffff;}
     .whiteBg {background: #fff;}
+
+    svg text {font-family:"Microsoft YaHei";}
 </style>
 <div class="loading">
     <div class="ball"></div>
@@ -132,6 +134,7 @@
     // Draw geojson to svg path using the projection
     var path = d3.geo.path().projection(projection);
     // Project from latlng to pixel coords
+    //var worldProject = d3.geo.mercator().translate([0, 0]).scale(1).rotate([ - 11.5, 0]);
     var worldProject = d3.geo.mercator()
             .scale(width/8.5)
             .translate([width / 2, height / 1.7]);
