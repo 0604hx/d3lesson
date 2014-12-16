@@ -29,7 +29,7 @@
 <#macro aboutme>
 <div class="footer">
     by 集成显卡 1053214511@qq.com
-    <a href="blog.csdn.net/ssrc0604hx" target="_blank">我的博客</a>
+    <a href="http://blog.csdn.net/ssrc0604hx" target="_blank">我的博客</a>
     建议分辨率：1024*768 以上
 </div>
 </#macro>

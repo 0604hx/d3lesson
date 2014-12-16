@@ -26,7 +26,7 @@
     }
     /*没有被选中的省份*/
     .noactive {
-        opacity: 0.4;
+        opacity: 0.2;
         /*stroke:none;*/
     }
 
@@ -35,7 +35,7 @@
 
     .content-wrap {}
     .backBg {background: #161616 url(${IMAGES}/pattern_40.gif) top left repeat;color:#ffffff;}
-    .whiteBg {background: #fff;}
+    .whiteBg {background: #dadada;}
 
     svg text {font-family:"Microsoft YaHei";}
 </style>
@@ -249,6 +249,7 @@
      * 是否显示城市名
      */
     function showCityName(show){
+        setting.cityName = show;
         if(show){
             for(var p in cities){
                 for(var i=0;i<cities[p].length;i++){
@@ -290,7 +291,7 @@
             return;
         if (d.id == 156) {
             if (scaleLevel == 0) {
-                worldG.classed("hide", true);
+                transitionWorld(false);
                 if (!chinaG) {
                     drawChina(china);
                 }
@@ -345,7 +346,7 @@
             drawCity();
             transitionChina(true);
         }else if(scaleLevel == 1){
-            worldG.classed("hide", false);
+            transitionWorld(true);
             transitionChina(false, function(){
                 chinaG.classed("hide", true);
                 setLevel(0);
@@ -353,18 +354,32 @@
         }
         d3.event.stopPropagation();
     }
-
+    //世界地图的显隐
+    function transitionWorld(show){
+        worldG.attr("opacity", show?0:1)
+                .transition().duration(750)
+                .attr("opacity",show?1:0);
+    }
     /**
      * 缩放中国地图（从世界地图中放大，或者缩小到世界地图中）
      */
     function transitionChina(show, callBack, dura){
+        toggleCityName(false);
         var tr = show?[0,0]:[width/1.7, height/4];
         var sc = show?1:0.26;
         container.transition()
                 .duration(dura||600)
                 .call(zoom.translate(tr).scale(sc).event)
-                .each("end", callBack||function(){})
+                .each("end", function(){
+                    toggleCityName(show&&setting.cityName);
+                    if(callBack)
+                        callBack();
+                })
         ;
+    }
+
+    function toggleCityName(show){
+        cityG.selectAll(".cityName.capital").attr("opacity", show?1:0);
     }
 
     function zoomed() {
@@ -463,6 +478,7 @@
     var worlds;     //世界地图
     var china;      //中国地图
     window.onload = function(){
+        d3.select("body").classed("whiteBg", true);
         //同时生成随机的颜色值
         colors = d3.scale.category20b();
 
